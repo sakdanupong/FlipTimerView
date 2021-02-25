@@ -92,6 +92,7 @@ class CountDownClock : LinearLayout {
                     countdownListener?.countdownAboutToFinish()
                 }
                 setCountDownTime(millisUntilFinished)
+                countdownListener?.onTick(millisUntilFinished)
             }
 
             override fun onFinish() {
@@ -475,6 +476,7 @@ class CountDownClock : LinearLayout {
     }
 
     interface CountdownCallBack {
+        fun onTick(millisUntilFinished: Long)
         fun countdownAboutToFinish()
         fun countdownFinished()
     }
