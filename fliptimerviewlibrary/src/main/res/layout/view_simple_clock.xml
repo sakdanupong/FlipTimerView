@@ -30,6 +30,7 @@
 
 
         <TextView
+                android:id="@+id/dayTextView"
             android:layout_below="@+id/firstDigitDays"
             android:layout_centerInParent="true"
             android:textSize="@dimen/text_10"
@@ -64,7 +65,7 @@
 
         <TextView
             android:layout_below="@+id/firstDigitHours"
-            android:id="@+id/ddd"
+            android:id="@+id/hourTextView"
             android:layout_width="wrap_content"
             android:textSize="@dimen/text_10"
             android:layout_height="wrap_content"
@@ -98,7 +99,7 @@
 
         <TextView
             android:layout_below="@+id/firstDigitMinute"
-            android:id="@+id/ds"
+            android:id="@+id/minTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -113,7 +114,8 @@
     <RelativeLayout
             android:layout_marginStart="4dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_marginLeft="4dp">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp">
 
         <com.asp.fliptimerviewlibrary.CountDownDigit
         android:id="@+id/firstDigitSecond"
@@ -133,7 +135,7 @@
 
         <TextView
             android:layout_below="@+id/firstDigitSecond"
-            android:id="@+id/sssk"
+            android:id="@+id/secTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
