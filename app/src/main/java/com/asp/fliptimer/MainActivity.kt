@@ -20,8 +20,12 @@ class MainActivity : Activity() {
         timerProgramCountdown.setCustomTypeface(typeface!!)
         timerProgramCountdown.startCountDown(99999999)
         timerProgramCountdown.setCountdownListener(object : CountDownClock.CountdownCallBack {
+            override fun onTick(millisUntilFinished: Long) {
+
+            }
+
             override fun countdownAboutToFinish() {
-                //TODO Add your code here
+                
             }
 
             override fun countdownFinished() {
