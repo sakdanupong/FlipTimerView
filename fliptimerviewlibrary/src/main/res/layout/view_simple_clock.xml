@@ -20,13 +20,13 @@
             android:clipToPadding="false"/>
 
         <com.asp.fliptimerviewlibrary.CountDownDigit
-            android:id="@+id/secondDigitDays"
-            android:layout_toEndOf="@+id/firstDigitDays"
-            android:layout_toRightOf="@+id/firstDigitDays"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clipChildren="false"
-            android:clipToPadding="false"/>
+                android:id="@+id/secondDigitDays"
+                android:layout_toEndOf="@+id/firstDigitDays"
+                android:layout_toRightOf="@+id/firstDigitDays"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false" />
 
 
         <TextView
@@ -44,10 +44,29 @@
     </RelativeLayout>
 
     <RelativeLayout
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp">
+            android:layout_marginLeft="2dp">
+
+        <TextView
+                android:id="@+id/daySuffixTextView"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/text_12"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_marginStart="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp">
 
         <com.asp.fliptimerviewlibrary.CountDownDigit
         android:id="@+id/firstDigitHours"
@@ -78,8 +97,19 @@
 
     </RelativeLayout>
 
+    <TextView
+            android:id="@+id/hourSuffixTextView"
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/text_12"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:visibility="gone"/>
+
     <RelativeLayout
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:layout_marginLeft="4dp">
 
@@ -112,11 +142,22 @@
 
     </RelativeLayout>
 
+    <TextView
+            android:id="@+id/minSuffixTextView"
+            android:layout_width="wrap_content"
+            android:textSize="@dimen/text_12"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:visibility="gone"/>
+
     <RelativeLayout
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp">
+            android:layout_marginLeft="2dp">
 
         <com.asp.fliptimerviewlibrary.CountDownDigit
         android:id="@+id/firstDigitSecond"

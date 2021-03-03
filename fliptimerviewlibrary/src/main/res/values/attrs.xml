@@ -21,6 +21,7 @@
         <attr name="almostFinishedCallbackTimeInSeconds" format="integer"/>
         <attr name="countdownTickInterval" format="integer"/>
         <attr name="displayHourOnly" format="boolean"/>
+        <attr name="suffixText" format="string"/>
     </declare-styleable>
 
 

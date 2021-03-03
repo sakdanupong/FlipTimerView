@@ -23,6 +23,7 @@ class CountDownClock : LinearLayout {
 
     private var resetSymbol: String = "8"
     private var displayHourOnly = false
+    private var suffixText: String? = null
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -75,6 +76,10 @@ class CountDownClock : LinearLayout {
             this.displayHourOnly = displayHourOnly
             updateDayUI()
 
+            val suffixText = typedArray?.getString(R.styleable.CountDownClock_suffixText)
+            this.suffixText = suffixText
+            updateSuffixTextUI()
+
             invalidate()
             typedArray?.recycle()
         }
@@ -111,6 +116,18 @@ class CountDownClock : LinearLayout {
     private fun updateDayUI() {
         secondDigitDays?.visibility = if (!displayHourOnly) View.VISIBLE else View.GONE
         firstDigitDays?.visibility = if (!displayHourOnly) View.VISIBLE else View.GONE
+        daySuffixTextView.visibility = if (!displayHourOnly) View.VISIBLE else View.GONE
+    }
+
+    private fun updateSuffixTextUI() {
+        daySuffixTextView.text = suffixText
+        minSuffixTextView.text = suffixText
+        hourSuffixTextView.text = suffixText
+
+        val shouldDisplaySuffix = suffixText?.isNotEmpty() == true
+        daySuffixTextView.visibility = if (!displayHourOnly && shouldDisplaySuffix) View.VISIBLE else View.GONE
+        minSuffixTextView.visibility = if (shouldDisplaySuffix) View.VISIBLE else View.GONE
+        hourSuffixTextView.visibility = if (shouldDisplaySuffix) View.VISIBLE else View.GONE
     }
 
     fun resetCountdownTimer() {
@@ -350,6 +367,10 @@ class CountDownClock : LinearLayout {
         firstDigitSecond.backLowerText.setTextColor(textColor)
         secondDigitSecond.frontLowerText.setTextColor(textColor)
         secondDigitSecond.backLowerText.setTextColor(textColor)
+
+        daySuffixTextView.setTextColor(textColor)
+        hourSuffixTextView.setTextColor(textColor)
+        minSuffixTextView.setTextColor(textColor)
     }
 
     private fun setDigitTextSize(digitsTextSize: Float) {
@@ -386,6 +407,10 @@ class CountDownClock : LinearLayout {
         firstDigitSecond.backLowerText.setTextSize(TypedValue.COMPLEX_UNIT_PX, digitsTextSize)
         secondDigitSecond.frontLowerText.setTextSize(TypedValue.COMPLEX_UNIT_PX, digitsTextSize)
         secondDigitSecond.backLowerText.setTextSize(TypedValue.COMPLEX_UNIT_PX, digitsTextSize)
+
+        daySuffixTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, digitsTextSize)
+        hourSuffixTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, digitsTextSize)
+        minSuffixTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, digitsTextSize)
     }
 
     private fun setHalfDigitHeightAndDigitWidth(halfDigitHeight: Int, digitWidth: Int) {
@@ -518,7 +543,9 @@ class CountDownClock : LinearLayout {
         firstDigitSecond.setTypeFace(typeface)
         secondDigitSecond.setTypeFace(typeface)
         secondDigitSecond.setTypeFace(typeface)
-
+        daySuffixTextView.typeface = typeface
+        hourSuffixTextView.typeface = typeface
+        minSuffixTextView.typeface = typeface
     }
 
 
