@@ -29,6 +29,7 @@
             flipTimer:halfDigitHeight="22dp"
             flipTimer:resetSymbol="8"
             flipTimer:splitterPadding="0dp"
+            flipTimer:displayHourOnly="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

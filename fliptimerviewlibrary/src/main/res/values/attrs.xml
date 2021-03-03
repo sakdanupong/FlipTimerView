@@ -20,6 +20,7 @@
         <attr name="animationDuration" format="integer"/>
         <attr name="almostFinishedCallbackTimeInSeconds" format="integer"/>
         <attr name="countdownTickInterval" format="integer"/>
+        <attr name="displayHourOnly" format="boolean"/>
     </declare-styleable>
 
 

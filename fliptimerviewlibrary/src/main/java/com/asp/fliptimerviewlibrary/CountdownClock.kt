@@ -22,6 +22,7 @@ class CountDownClock : LinearLayout {
     private var almostFinishedCallbackTimeInSeconds: Int = 5
 
     private var resetSymbol: String = "8"
+    private var displayHourOnly = false
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -70,6 +71,10 @@ class CountDownClock : LinearLayout {
             val countdownTickInterval = typedArray?.getInt(R.styleable.CountDownClock_countdownTickInterval, 1000)
             this.countdownTickInterval = countdownTickInterval ?: 1000
 
+            val displayHourOnly = typedArray?.getBoolean(R.styleable.CountDownClock_displayHourOnly, false) ?: false
+            this.displayHourOnly = displayHourOnly
+            updateDayUI()
+
             invalidate()
             typedArray?.recycle()
         }
@@ -103,6 +108,11 @@ class CountDownClock : LinearLayout {
         countDownTimer?.start()
     }
 
+    private fun updateDayUI() {
+        secondDigitDays?.visibility = if (!displayHourOnly) View.VISIBLE else View.GONE
+        firstDigitDays?.visibility = if (!displayHourOnly) View.VISIBLE else View.GONE
+    }
+
     fun resetCountdownTimer() {
         countDownTimer?.cancel()
         firstDigitDays.setNewText(resetSymbol)
@@ -121,7 +131,7 @@ class CountDownClock : LinearLayout {
 
     private fun setCountDownTime(timeToStart: Long) {
 
-        val days = TimeUnit.MILLISECONDS.toDays(timeToStart)
+        val days = if (displayHourOnly) 0 else TimeUnit.MILLISECONDS.toDays(timeToStart)
         val hours = TimeUnit.MILLISECONDS.toHours(timeToStart - TimeUnit.DAYS.toMillis(days))
         val minutes = TimeUnit.MILLISECONDS.toMinutes(timeToStart - (TimeUnit.DAYS.toMillis(days) + TimeUnit.HOURS.toMillis(hours)))
         val seconds = TimeUnit.MILLISECONDS.toSeconds(timeToStart - (TimeUnit.DAYS.toMillis(days) + TimeUnit.HOURS.toMillis(hours) + TimeUnit.MINUTES.toMillis(minutes)))
