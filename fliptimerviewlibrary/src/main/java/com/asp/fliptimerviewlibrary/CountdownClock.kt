@@ -24,6 +24,7 @@ class CountDownClock : LinearLayout {
     private var resetSymbol: String = "8"
     private var displayHourOnly = false
     private var suffixText: String? = null
+    private var daySuffixText: String? = null
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -80,9 +81,18 @@ class CountDownClock : LinearLayout {
             this.suffixText = suffixText
             updateSuffixTextUI()
 
+            val daySuffixText = typedArray?.getString(R.styleable.CountDownClock_daySuffixText)
+            this.daySuffixText = daySuffixText
+            updateSuffixTextUI()
+
             invalidate()
             typedArray?.recycle()
         }
+    }
+
+    fun updateDisplayHourOnly(displayHourOnly: Boolean) {
+        this.displayHourOnly = displayHourOnly
+        updateDayUI()
     }
 
     ////////////////
@@ -120,12 +130,12 @@ class CountDownClock : LinearLayout {
     }
 
     private fun updateSuffixTextUI() {
-        daySuffixTextView.text = suffixText
+        daySuffixTextView.text = daySuffixText
         minSuffixTextView.text = suffixText
         hourSuffixTextView.text = suffixText
 
         val shouldDisplaySuffix = suffixText?.isNotEmpty() == true
-        daySuffixTextView.visibility = if (!displayHourOnly && shouldDisplaySuffix) View.VISIBLE else View.GONE
+        daySuffixTextView.visibility = if (!displayHourOnly && daySuffixText?.isNotEmpty()== true) View.VISIBLE else View.GONE
         minSuffixTextView.visibility = if (shouldDisplaySuffix) View.VISIBLE else View.GONE
         hourSuffixTextView.visibility = if (shouldDisplaySuffix) View.VISIBLE else View.GONE
     }

@@ -22,6 +22,7 @@
         <attr name="countdownTickInterval" format="integer"/>
         <attr name="displayHourOnly" format="boolean"/>
         <attr name="suffixText" format="string"/>
+        <attr name="daySuffixText" format="string"/>
     </declare-styleable>
 
 
